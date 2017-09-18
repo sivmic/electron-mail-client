@@ -1,20 +1,16 @@
 <template>
-    <div class="contacts">
-        <table class="table-striped" v-if="action == 'list'">
-            <thead>
-                <tr>
-                    <th>Sender</th>
-                    <th>Subject</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="mail in mails">
-                    <td>{{ mail.sender }}</td>
-                    <td>{{ mail.subject }}</td>
-                    <td><a href="#" @click.prevent="removeMail(mail)"><span class="icon icon-cancel-circled"></span></a></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="inbox">
+        <ul class="list-group" v-if="action == 'list'">
+            <li class="list-group-header">
+                <input class="form-control" placeholder="Search for someone">
+            </li>
+            <li class="list-group-item" v-for="mail in mails">
+                <div class="media-body">
+                    <strong>{{ mail.sender }}</strong>
+                    <p>{{ mail.subject }}</p>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -23,17 +19,17 @@
         data () {
             return {
                 action: 'list',
-                mails: [],
-                currentMailId: null,
-                sender: '',
-                subject: ''
+                mails: [
+                    // temporary
+                    {sender: "sivak.main@gmail.com", subject: "Hello there"},
+                    {sender: "vesel.fil@gmail.com", subject: "Test subject"}
+                ],
+                currentMailId: null
             }
         },
         methods: {
             changeAction (action) {
                 this.action = action;
-                this.sender = '';
-                this.subject = '';
             },
             removeMail (mail) {
                 let index = this.mails.indexOf(mail);
@@ -44,7 +40,7 @@
 </script>
 
 <style>
-    .contacts {
-
+    .inbox {
+        text-align: left;
     }
 </style>

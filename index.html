@@ -11,11 +11,10 @@
                 <div class="window-content">
                     <div class="pane-group">
                         <div class="pane-sm sidebar">
+                            <button id="compose" type="button">Compose</button>
                             <nav class="nav-group">
                                 <h5 class="nav-group-title">Favorites</h5>
-                                <router-link class="nav-group-item" to="/"><span class="icon icon-home"></span> Home</router-link>
-                                <router-link class="nav-group-item" to="/test"><span class="icon icon-home"></span> Test</router-link>
-                                <router-link class="nav-group-item" to="/contacts"><span class="icon icon-home"></span> Contacts</router-link>
+                                <router-link class="nav-group-item" to="/"><span class="icon icon-home"></span> Inbox</router-link>
                             </nav>
                         </div>
                         <div class="pane container" style="padding: 10px;">
@@ -26,5 +25,6 @@
             </div>
         </div>
         <script src="dist/build.js"></script>
+        <script src="renderer.js"></script>
     </body>
 </html>
