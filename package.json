@@ -1,5 +1,6 @@
 {
     "name": "electron-mail-client",
+    "productName": "Mail client",
     "version": "1.0.0",
     "description": "Electron mail client app",
     "author": "Michal Sivak",

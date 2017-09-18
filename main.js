@@ -18,7 +18,8 @@ function createWindow () {
         minWidth: 600,
         minHeight: 400,
         icon: './cpu.png',
-        show: true
+        backgroundColor: '#ffffff',
+        show: false
     });
 
     // and load the index.html of the app.
@@ -31,15 +32,20 @@ function createWindow () {
     // Emitted when the window is closed.
     mainWindow.on('closed', () => {
         mainWindow = null
-    })
+    });
+
+    mainWindow.on('ready-to-show', () => {
+       mainWindow.show();
+       mainWindow.focus();
+    });
 }
 
 // This method will be called when Electron has finished
 app.on('ready', () => {
+    // Change menu to my own in menu.js
+    require('./src/js/menu');
+    // Create main window
     createWindow();
-    /*mainWindow.on('ready-to-show', () => {
-       mainWindow.show()
-    });*/
 });
 
 // Quit when all windows are closed.

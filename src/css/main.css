@@ -1,4 +1,14 @@
 #compose {
     text-align: center;
-    margin: 10% 0 0 20%;
+    margin: 5px 0 0 5px;
+    width: 140px;
+    /*padding: 20px;*/
+}
+
+/*button, ul {
+      -webkit-user-select:none;
+  }*/
+
+body {
+    font: caption;
 }
