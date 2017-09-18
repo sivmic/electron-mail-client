@@ -13,8 +13,8 @@ let mainWindow = null;
 function createWindow () {
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 600,
+        height: 400,
         minWidth: 600,
         minHeight: 400,
         icon: './cpu.png',
