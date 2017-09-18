@@ -1,2 +1,20 @@
-# electron-mail-client
-This is school project for my finals. It is mail client written in electron and react.
+### Requirements
+    Electron
+    Vue
+    Vue Router
+    Webpack
+
+## Run
+
+```bash
+npm run dev-server
+npm run dev // on a different tab
+```
+
+## Build
+
+```bash
+npm run build
+npm run package-osx
+```
+

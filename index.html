@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Mail client</title>
+        <link rel="stylesheet" href="assets/css/photon.css">
+    </head>
+    <body>
+        <div id="app">
+            <div class="window">
+                <div class="window-content">
+                    <div class="pane-group">
+                        <div class="pane-sm sidebar">
+                            <nav class="nav-group">
+                                <h5 class="nav-group-title">Favorites</h5>
+                                <router-link class="nav-group-item" to="/"><span class="icon icon-home"></span> Home</router-link>
+                                <router-link class="nav-group-item" to="/test"><span class="icon icon-home"></span> Test</router-link>
+                                <router-link class="nav-group-item" to="/contacts"><span class="icon icon-home"></span> Contacts</router-link>
+                            </nav>
+                        </div>
+                        <div class="pane container" style="padding: 10px;">
+                            <router-view></router-view>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="dist/build.js"></script>
+    </body>
+</html>
