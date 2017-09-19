@@ -4,6 +4,7 @@ const ipcMain = electron.ipcMain;
 
 const BrowserWindow = electron.BrowserWindow;
 
+// When development mode is activated, automatic reloads are activated
 if (process.env.NODE_ENV === 'development') {
     require('electron-reload')(__dirname)
 }
@@ -11,7 +12,7 @@ if (process.env.NODE_ENV === 'development') {
 let mainWindow = null;
 
 function createWindow () {
-    // Create the browser window.
+    // Create the mainWindow
     mainWindow = new BrowserWindow({
         width: 600,
         height: 400,
@@ -22,41 +23,42 @@ function createWindow () {
         show: false
     });
 
-    // and load the index.html of the app.
+    // and load the index.html of the app
     if (process.env.NODE_ENV === 'development') {
         mainWindow.loadURL(`http://localhost:3000`)
     } else {
         mainWindow.loadURL(`file://${__dirname}/index.html`)
     }
 
-    // Emitted when the window is closed.
+    // Emitted when the mainWindow is closed.
     mainWindow.on('closed', () => {
         mainWindow = null
     });
 
+    // When the mainWindow is rendered, it will be shown (preventing awful blank screen)
     mainWindow.on('ready-to-show', () => {
        mainWindow.show();
        mainWindow.focus();
     });
 }
 
-// This method will be called when Electron has finished
+// This method will be called when Electron has finished preparing
 app.on('ready', () => {
     // Change menu to my own in menu.js
     require('./src/js/menu');
-    // Create main window
+    // Create mainWindow
     createWindow();
 });
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
-    // On OS X it is common for applications and their menu bar
+    // On macOS it is common for applications and their menu bar to not close
     if (process.platform !== 'darwin') {
         app.quit()
     }
 });
 
-// If mainWindow is null and we want to activate it, it will be called
+// If the mainWindow is null and we want to activate it, this will create one
 app.on('activate', () => {
     if (mainWindow === null) {
         createWindow()

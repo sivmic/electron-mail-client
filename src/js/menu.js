@@ -19,7 +19,7 @@ const template = [
         role: 'window',
         submenu: [
             {role: 'close', label: 'Close', accelerator: 'CmdOrCtrl+W'},
-            {role: 'minimize', label: 'Minimize', accelerator: 'CmdOrCtrl+M'}
+            {role: 'hide', label: 'Hide', accelerator: 'CmdOrCtrl+H'}
         ]
     },
 ];
