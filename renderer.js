@@ -1,5 +1,7 @@
-const ipcRenderer = require('electron').ipcRenderer;
-const webFrame = require('electron').webFrame;
+const electron = require('electron');
+
+const ipcRenderer = electron.ipcRenderer;
+const webFrame = electron.webFrame;
 
 
 // Listener of clicks on #compose button, when clicked, ipcRenderer send 'compose' signal to ipcMain in /main.js

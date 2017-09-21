@@ -9,7 +9,9 @@ if (process.env.NODE_ENV === 'development') {
     require('electron-reload')(__dirname)
 }
 
-let mainWindow = null;
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let mainWindow;
 
 function createWindow () {
     // Create the mainWindow
@@ -58,8 +60,9 @@ app.on('window-all-closed', () => {
     }
 });
 
-// If the mainWindow is null and we want to activate it, this will create one
+// If the mainWindow is null and app is activated, this will create one
 app.on('activate', () => {
+    // On macOS is common to re-open window, when dock icon is clicked when all windows are closed
     if (mainWindow === null) {
         createWindow()
     }
