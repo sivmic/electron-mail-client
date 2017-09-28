@@ -18,3 +18,5 @@ npm run build
 npm run package-osx
 ```
 
+Boilerplate from `https://github.com/sohelamin/electron-vue-boilerplate/`
+

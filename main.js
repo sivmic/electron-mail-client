@@ -62,7 +62,7 @@ app.on('window-all-closed', () => {
 
 // If the mainWindow is null and app is activated, this will create one
 app.on('activate', () => {
-    // On macOS is common to re-open window, when dock icon is clicked when all windows are closed
+    // On macOS is common to re-open window if dock icon is clicked when all windows are closed
     if (mainWindow === null) {
         createWindow()
     }
