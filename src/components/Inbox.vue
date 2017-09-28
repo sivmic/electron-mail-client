@@ -1,9 +1,6 @@
 <template>
     <div class="inbox">
         <ul class="list-group" v-if="action == 'list'">
-            <li class="list-group-header">
-                <input class="form-control" placeholder="Search for someone">
-            </li>
             <li class="list-group-item" v-for="mail in mails">
                 <div class="media-body">
                     <strong>{{ mail.sender }}</strong>

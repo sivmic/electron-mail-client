@@ -3,8 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>Mail client</title>
-        <link rel="stylesheet" href="assets/css/photon.css">
         <link rel="stylesheet" href="src/css/main.css">
+        <link rel="stylesheet" href="src/css/navbar.css">
+        <link rel="stylesheet" href="src/css/list.css">
     </head>
     <body>
         <div id="app">
@@ -12,13 +13,13 @@
                 <div class="window-content">
                     <div class="pane-group">
                         <div class="pane-sm sidebar">
-                            <button id="compose" type="button" class="btn btn-large btn-default">Compose</button>
+                            <button id="compose" type="button" class="btn">Compose</button>
                             <nav class="nav-group">
                                 <h5 class="nav-group-title">Favorites</h5>
-                                <router-link class="nav-group-item" to="/"><span class="icon icon-home"></span> Inbox</router-link>
+                                <router-link class="nav-group-item" to="/"><span></span>Inbox</router-link>
                             </nav>
                         </div>
-                        <div class="pane container" style="padding: 10px;">
+                        <div class="pane" style="padding: 10px;">
                             <router-view></router-view>
                         </div>
                     </div>
