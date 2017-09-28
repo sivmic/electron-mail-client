@@ -1,3 +1,3 @@
 *.vue linguist-language=JavaScript
 *.css linguist-language=JavaScript
-/src/css/main.sass linguist-language=sass
+/src/css/main.sass linguist-language=css
