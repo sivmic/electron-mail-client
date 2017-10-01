@@ -2,54 +2,23 @@ const electron = require('electron');
 const app = electron.app;
 const ipcMain = electron.ipcMain;
 
-const BrowserWindow = electron.BrowserWindow;
+const windowStateKeeper = require('electron-window-state');
+
+// Require 'windows' and 'menu'
+const windows = require('./src/js/windows');
+const menu = require('./src/js/menu');
 
 // When development mode is activated, automatic reloads are activated
 if (process.env.NODE_ENV === 'development') {
     require('electron-reload')(__dirname)
 }
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let mainWindow;
-
-function createWindow () {
-    // Create the mainWindow
-    mainWindow = new BrowserWindow({
-        width: 600,
-        height: 400,
-        minWidth: 600,
-        minHeight: 400,
-        icon: './cpu.png',
-        backgroundColor: '#ffffff',
-        show: false
-    });
-
-    // and load the index.html of the app
-    if (process.env.NODE_ENV === 'development') {
-        mainWindow.loadURL(`http://localhost:3000`)
-    } else {
-        mainWindow.loadURL(`file://${__dirname}/index.html`)
-    }
-
-    // Emitted when the mainWindow is closed.
-    mainWindow.on('closed', () => {
-        mainWindow = null
-    });
-
-    // When the mainWindow is rendered, it will be shown (preventing awful blank screen)
-    mainWindow.on('ready-to-show', () => {
-       mainWindow.show();
-       mainWindow.focus();
-    });
-}
-
 // This method will be called when Electron has finished preparing
 app.on('ready', () => {
-    // Change menu to my own in menu.js
-    require('./src/js/menu');
+    // Set the menu for the app
+    menu.setMenu();
     // Create mainWindow
-    createWindow();
+    windows.createMainWindow();
 });
 
 // Quit when all windows are closed.
@@ -63,12 +32,12 @@ app.on('window-all-closed', () => {
 // If the mainWindow is null and app is activated, this will create one
 app.on('activate', () => {
     // On macOS is common to re-open window if dock icon is clicked when all windows are closed
-    if (mainWindow === null) {
-        createWindow()
+    if (windows.mainWindow === null) {
+        windows.createMainWindow()
     }
 });
 
 // ipcMain is listening for 'compose' from ipcRenderer in /renderer.js
 ipcMain.on('compose', () => {
-   createWindow();
+   windows.createMainWindow();
 });

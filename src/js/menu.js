@@ -2,6 +2,7 @@ const {app, Menu} = require('electron');
 
 const template = [
     {
+        // Under 'Edit' label add 'undo' and 'redo' roles + add shortcuts to them
         label: 'Edit',
         submenu: [
             {role: 'undo', label: 'Undo', accelerator: 'CmdOrCtrl+Z'},
@@ -9,6 +10,7 @@ const template = [
         ]
     },
     {
+        // Under 'View' label add 'reload' and 'toggledevtools' roles + add shortcuts to them
         label: 'View',
         submenu: [
             {role: 'reload', label: 'Reload', accelerator: 'CmdOrCtrl+R'},
@@ -16,6 +18,7 @@ const template = [
         ]
     },
     {
+        // Under 'Window' label add 'close' and 'hide' roles + add shortcuts to them
         role: 'window',
         submenu: [
             {role: 'close', label: 'Close', accelerator: 'CmdOrCtrl+W'},
@@ -24,16 +27,24 @@ const template = [
     },
 ];
 
+// On macOS, we have to add some another settings
 if (process.platform === 'darwin') {
     template.unshift({
+        // Set name in upper-bar on macOS
         label: app.getName(),
         submenu: [
-            {role: 'preferences', label: 'Preferences', accelerator: 'Cmd+,'},
-            {type: 'separator'},
-            {role: 'quit', label: 'Quit', accelerator: 'Cmd+Q'}
+            {role: 'preferences', label: 'Preferences', accelerator: 'Cmd+,'}, // Preferences == settings on macOS
+            {type: 'separator'}, // Blank line, added for good looks
+            {role: 'quit', label: 'Quit', accelerator: 'Cmd+Q'} // Quit role + its shortcut
         ]
     });
 }
 
-const menu = Menu.buildFromTemplate(template);
-Menu.setApplicationMenu(menu);
+// Set importable functions/variables
+module.exports = {
+    // Set menu in our app
+    setMenu: () => {
+        const menu = Menu.buildFromTemplate(template);
+        Menu.setApplicationMenu(menu);
+    }
+};
