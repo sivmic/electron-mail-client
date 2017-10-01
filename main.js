@@ -2,8 +2,6 @@ const electron = require('electron');
 const app = electron.app;
 const ipcMain = electron.ipcMain;
 
-const windowStateKeeper = require('electron-window-state');
-
 // Require 'windows' and 'menu'
 const windows = require('./src/js/windows');
 const menu = require('./src/js/menu');
