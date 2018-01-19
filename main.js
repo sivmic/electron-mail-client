@@ -5,6 +5,7 @@ const ipcMain = electron.ipcMain;
 // Require 'windows' and 'menu'
 const windows = require('./src/js/windows');
 const menu = require('./src/js/menu');
+const file = require('./src/js/file');
 
 // When development mode is activated, automatic reloads are activated
 if (process.env.NODE_ENV === 'development') {
@@ -17,6 +18,12 @@ app.on('ready', () => {
     menu.setMenu();
     // Create mainWindow
     windows.createMainWindow();
+
+    //file.writeToFile("Chello");
+    let readFile = file.readFromFile();
+    let mail = readFile["Account"]["Mail"];
+    let password = readFile["Account"]["Password"];
+    global.account = {mail: mail, password: password};
 });
 
 // Quit when all windows are closed.

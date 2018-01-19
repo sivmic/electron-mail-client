@@ -5,3 +5,6 @@ dist
 package
 /src/css/*.css
 /src/css/*.css.map
+idea
+account.json
+package-lock.json

@@ -12,6 +12,8 @@
 </template>
 
 <script>
+    const remote = require('electron').remote;
+
     export default {
         data () {
             return {
@@ -19,7 +21,8 @@
                 mails: [
                     // temporary
                     {sender: "sivak.main@gmail.com", subject: "Hello there"},
-                    {sender: "vesel.fil@gmail.com", subject: "Test subject"}
+                    {sender: "vesel.fil@gmail.com", subject: "Test subject"},
+                    {sender: remote.getGlobal('account').mail, subject: remote.getGlobal('account').password}
                 ],
                 currentMailId: null
             }
