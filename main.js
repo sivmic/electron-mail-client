@@ -7,6 +7,7 @@ const windows = require('./src/js/windows');
 const menu = require('./src/js/menu');
 const file = require('./src/js/file');
 const prompt = require('./src/js/prompt');
+const mail = require('./src/js/mail');
 
 // When development mode is activated, automatic reloads are activated
 if (process.env.NODE_ENV === 'development') {
@@ -20,13 +21,22 @@ app.on('ready', () => {
     // Create mainWindow
     windows.createMainWindow();
 
-    // if (!file.checkFile()) {
-    //     //prompt.loginPrompt(windows.mainWindow);
-    // }
+    // file.writeToFile({
+    //     "Mail": "sivak.main@gmail.com",
+    //     "Password": "go_OG_le_69;",
+    //     "Server": "imap.gmail.com",
+    // });
 
-    let mail = file.mail;
-    let password = file.password;
-    global.account = {mail: mail, password: password};
+    mail.getSubjects({
+        imap: {
+            user: file.mail,
+            password: file.password,
+            host: file.server,
+            port: file.port,
+            tls: file.tls,
+            authTimeout: 3000
+        }
+    });
 });
 
 // Quit when all windows are closed.

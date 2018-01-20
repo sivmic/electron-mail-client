@@ -22,6 +22,7 @@
     "electron-prompt": "^0.5.0",
     "electron-window-state": "^4.1.1",
     "fs": "0.0.1-security",
+    "imap-simple": "^4.0.0",
     "vue": "^2.5.13",
     "vue-router": "^2.8.1",
     "vue-template-compiler": "^2.5.13"
