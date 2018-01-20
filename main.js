@@ -6,6 +6,7 @@ const ipcMain = electron.ipcMain;
 const windows = require('./src/js/windows');
 const menu = require('./src/js/menu');
 const file = require('./src/js/file');
+const prompt = require('./src/js/prompt');
 
 // When development mode is activated, automatic reloads are activated
 if (process.env.NODE_ENV === 'development') {
@@ -19,10 +20,12 @@ app.on('ready', () => {
     // Create mainWindow
     windows.createMainWindow();
 
-    //file.writeToFile("Chello");
-    let readFile = file.readFromFile();
-    let mail = readFile["Account"]["Mail"];
-    let password = readFile["Account"]["Password"];
+    // if (!file.checkFile()) {
+    //     //prompt.loginPrompt(windows.mainWindow);
+    // }
+
+    let mail = file.mail;
+    let password = file.password;
     global.account = {mail: mail, password: password};
 });
 
@@ -44,5 +47,5 @@ app.on('activate', () => {
 
 // ipcMain is listening for 'compose' from ipcRenderer in /renderer.js
 ipcMain.on('compose', () => {
-   windows.createMainWindow();
+    windows.createMainWindow();
 });
