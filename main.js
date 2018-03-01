@@ -21,13 +21,7 @@ app.on('ready', () => {
     // Create mainWindow
     windows.createMainWindow();
 
-    // file.writeToFile({
-    //     "Mail": "sivak.main@gmail.com",
-    //     "Password": "go_OG_le_69;",
-    //     "Server": "imap.gmail.com",
-    // });
-
-    mail.getSubjects({
+    let config = {
         imap: {
             user: file.mail,
             password: file.password,
@@ -36,7 +30,11 @@ app.on('ready', () => {
             tls: file.tls,
             authTimeout: 3000
         }
-    });
+    };
+
+    mail.getSubjects(config);
+    mail.getBodies(config);
+
 });
 
 // Quit when all windows are closed.

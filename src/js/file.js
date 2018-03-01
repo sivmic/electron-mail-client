@@ -28,11 +28,7 @@ readFromFile = () => {
 };
 
 checkFile = () => {
-    if (!fs.existsSync("account.json")) {
-        writeToFile();
-        return false;
-    }
-    return true;
+    return fs.existsSync("account.json");
 };
 
 let file = checkFile() ? readFromFile() : textPattern;
@@ -46,5 +42,6 @@ module.exports = {
     tls: file["Account"]["TLS"],
     writeToFile: (data) => {
         writeToFile(data)
-    }
+    },
+    checkFile: () => checkFile()
 };

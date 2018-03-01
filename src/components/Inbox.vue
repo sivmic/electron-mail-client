@@ -1,10 +1,14 @@
 <template>
     <div class="inbox">
-        <ul class="list-group" v-if="action == 'list'">
-            <li class="list-group-item" v-for="mail in mails">
+        <ul class="list-group" v-if="action === 'list'">
+            <li class="list-group-item" v-for="subject in subjects">
                 <div class="media-body">
-                    <strong>{{ mail.sender }}</strong>
-                    <p>{{ mail.subject }}</p>
+                    {{ subject }}
+                </div>
+            </li>
+            <li class="list-group-item" v-for="body in bodies">
+                <div class="media-body">
+                    {{ body }}
                 </div>
             </li>
         </ul>
@@ -18,12 +22,8 @@
         data () {
             return {
                 action: 'list',
-                mails: [
-                    // temporary
-                    {sender: "sivak.main@gmail.com", subject: "Hello there"},
-                    {sender: "vesel.fil@gmail.com", subject: "Test subject"},
-                    {sender: remote.getGlobal('account').mail, subject: remote.getGlobal('account').password}
-                ],
+                subjects: remote.getGlobal("subjects"),
+                bodies: remote.getGlobal("bodies"),
                 currentMailId: null
             }
         },

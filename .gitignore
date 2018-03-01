@@ -8,3 +8,5 @@ package
 idea
 account.json
 package-lock.json
+.idea
+
